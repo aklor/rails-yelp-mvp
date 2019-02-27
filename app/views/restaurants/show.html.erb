@@ -1,0 +1,31 @@
+<%= link_to restaurants_path do %>
+  <p><i class="fas fa-arrow-circle-left"></i> back to all</p>
+  <% end %>
+<h2><%= @restaurant.name %> Information</h2>
+  <div class="row">
+  <%= render "./components/restaurant_card", restaurant: @restaurant %>
+  </div>
+<h3>Reviews</h3>
+  <div class="review_card_container">
+    <div class="row">
+      <% @reviews.each do |review| %>
+        <%= render "./components/review_card", review: review %>
+      <% end %>
+    </div>
+  </div>
+
+<h4>Add your own review</h4>
+
+<%= form_for [@restaurant, @review] do |f| %>
+  <div class="form-group">
+    <%= f.label :content %>
+    <%= f.text_field :content, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :rating %>
+    <%= f.text_field :rating, class: 'form-control' %>
+  </div>
+
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>

@@ -1,0 +1,13 @@
+<h2>Add your review for the restaurant <%= @review.name %></h2>
+<h2><%= @review.name %> Information</h2>
+  <div class="row">
+  <%= render "./components/review_card", review: @review %>
+  </div>
+<h3>Reviews</h3>
+  <div class="review_card_container">
+    <div class="row">
+      <% @reviews.each do |review| %>
+        <%= render "./components/review_card", review: review %>
+      <% end %>
+    </div>
+  </div>
